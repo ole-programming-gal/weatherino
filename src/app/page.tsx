@@ -22,16 +22,6 @@ export default function Home() {
   }
   return (
     <main className={styles.main}>
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
       <div className={styles.search}>
         <input type = "text"
         value = {City}
@@ -39,18 +29,20 @@ export default function Home() {
         onKeyDown={handleKeyDown}
         className={styles.CityField}/>
       </div>
-      <div>
-      <div className={styles.weatherDisplay}>
-        <Image
+      <div className={styles.center}>
+      <Image
         src={`/${weatherData.description}.png`}
         alt = "/Mist.png"
-        height={64}
-        width={64}
+        height={128}
+        width={128}
         />
+      </div>
+      <div>
+      <div className={styles.weatherDisplay}>
         <h1>{weatherData.temperature} °C </h1>
       </div>
       </div>
-      <div>
+      <div className = {styles.infoContainer}>
       <Image
         src= "/humidity.png"
         alt = ""
