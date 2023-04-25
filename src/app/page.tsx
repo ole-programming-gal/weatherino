@@ -6,7 +6,7 @@ import { getWeatherData } from './api/hello/route';
 
 export default function Home() {
   const [City, setCity] = useState('');
-  const [weatherData, setWeatherData] = useState({ temperature: 0, description: "" });
+  const [weatherData, setWeatherData] = useState({ temperature: 0, humidity:0,wSpeed:0 , description: "" });
   useEffect(() => {
     const fetchWeather = async () => {
       const data = await getWeatherData(City);
@@ -41,13 +41,32 @@ export default function Home() {
       </div>
       <div>
       <div className={styles.weatherDisplay}>
-        <Image src={weatherData.temperature > 28 ? "/public/hot.png" : "/public/cold.png"}
-        alt = ""
+        <Image
+        src={`/${weatherData.description}.png`}
+        alt = "/Mist.png"
         height={64}
         width={64}
         />
-        {weatherData.temperature} °C
+        <h1>{weatherData.temperature} °C </h1>
       </div>
+      </div>
+      <div>
+      <Image
+        src= "/humidity.png"
+        alt = ""
+        height={64}
+        width={64}
+        id = "Humidityimg"
+        />
+        <h1>{weatherData.humidity}</h1>
+        <Image
+        src= "/wind.png"
+        alt = ""
+        height={64}
+        width={64}
+        id = "Windimg"
+        />
+        <h1>{weatherData.wSpeed}</h1>
       </div>
       <div className={styles.ref}>
         <p>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></p>
